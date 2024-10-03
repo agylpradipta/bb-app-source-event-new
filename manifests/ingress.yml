@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: block-buster-ingress
+  namespace: legacy-demo
+  annotations:
+    kubernetes.io/ingress.class: nginx  # Adjust this if you're using a different Ingress controller
+spec:
+  rules:
+    - host: legacy-demo.arp-tech.my.id
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: block-buster-service
+                port: 
+                  number: 80
